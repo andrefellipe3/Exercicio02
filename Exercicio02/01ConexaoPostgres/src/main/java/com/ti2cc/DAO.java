@@ -65,8 +65,7 @@ public class DAO {
 		try {  
 			Statement st = conexao.createStatement();
 			String sql = "UPDATE usuario SET nome = '" + usuario.getNome() + "', idade = '"  
-				       + usuario.getIdade() + "', sexo = '" + usuario.getSexo() + "'"
-				       + "', profissao = '" + usuario.getProfissao() + "'"
+				       + usuario.getIdade() + "', sexo = '" + usuario.getSexo() + "',profissao = '" + usuario.getProfissao() + "'"
 					   + " WHERE numero = " + usuario.getNumero();
 			st.executeUpdate(sql);
 			st.close();
@@ -81,7 +80,7 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM usuario WHERE codigo = " + numero);
+			st.executeUpdate("DELETE FROM usuario WHERE numero = " + numero);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  

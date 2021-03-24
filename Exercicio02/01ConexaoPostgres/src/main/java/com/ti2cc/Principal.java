@@ -10,7 +10,7 @@ public class Principal {
 
 		
 		//Inserir um elemento na tabela
-		Usuario usuario = new Usuario(11, "pablo",32,'M',"Porteiro");
+		Usuario usuario = new Usuario(16, "shrek",19,'M',"ator");
 		if(dao.inserirUsuario(usuario) == true) {
 			System.out.println("Insercao com sucesso -> " + usuario.toString());
 		}
@@ -23,7 +23,7 @@ public class Principal {
 		}
 
 		//Atualizar usuario
-		usuario.setIdade(13);
+		usuario.setIdade(18);
 		dao.atualizarUsuario(usuario);
 
 		//Mostrar usuarios do sexo masculino

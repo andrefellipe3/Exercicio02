@@ -10,7 +10,7 @@ public class Usuario {
 	public Usuario() {
 		this.numero = -1;
 		this.nome = "";
-		this.idade = 0;
+		this.idade = -1;
 		this.sexo = '*';
 		this.profissao =  "";
 	}
