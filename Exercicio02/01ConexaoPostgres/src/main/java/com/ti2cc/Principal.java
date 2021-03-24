@@ -10,35 +10,35 @@ public class Principal {
 
 		
 		//Inserir um elemento na tabela
-		Usuario usuario = new Usuario(11, "pablo", "pablo",'M');
+		Usuario usuario = new Usuario(11, "pablo",32,'M',"Porteiro");
 		if(dao.inserirUsuario(usuario) == true) {
-			System.out.println("Inserção com sucesso -> " + usuario.toString());
+			System.out.println("Insercao com sucesso -> " + usuario.toString());
 		}
 		
-		//Mostrar usuários do sexo masculino		
-		System.out.println("==== Mostrar usuários do sexo masculino === ");
+		//Mostrar usuario do sexo masculino		
+		System.out.println("==== Mostrar usuarios do sexo masculino === ");
 		Usuario[] usuarios = dao.getUsuariosMasculinos();
 		for(int i = 0; i < usuarios.length; i++) {
 			System.out.println(usuarios[i].toString());
 		}
 
-		//Atualizar usuário
-		usuario.setSenha("nova senha");
+		//Atualizar usuario
+		usuario.setIdade(13);
 		dao.atualizarUsuario(usuario);
 
-		//Mostrar usuários do sexo masculino
-		System.out.println("==== Mostrar usuários === ");
+		//Mostrar usuarios do sexo masculino
+		System.out.println("==== Mostrar usuarios === ");
 		usuarios = dao.getUsuarios();
 		for(int i = 0; i < usuarios.length; i++) {
 			System.out.println(usuarios[i].toString());
 		}
 		
-		//Excluir usuário
-		dao.excluirUsuario(usuario.getCodigo());
+		//Excluir usuario
+		dao.excluirUsuario(usuario.getNumero());
 		
-		//Mostrar usuários
+		//Mostrar usuario
 		usuarios = dao.getUsuarios();
-		System.out.println("==== Mostrar usuários === ");		
+		System.out.println("==== Mostrar usuario === ");		
 		for(int i = 0; i < usuarios.length; i++) {
 			System.out.println(usuarios[i].toString());
 		}

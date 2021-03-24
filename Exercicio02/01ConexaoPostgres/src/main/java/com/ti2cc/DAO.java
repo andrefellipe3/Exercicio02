@@ -15,19 +15,19 @@ public class DAO {
 		String mydatabase = "teste";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "ti2cc";
-		String password = "ti@cc";
+		String username = "postgres";
+		String password = "fellipe123";
 		boolean status = false;
 
 		try {
 			Class.forName(driverName);
 			conexao = DriverManager.getConnection(url, username, password);
 			status = (conexao == null);
-			System.out.println("Conexão efetuada com o postgres!");
+			System.out.println("Conexao efetuada com o postgres!");
 		} catch (ClassNotFoundException e) { 
-			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
+			System.err.println("Conexao nao efetuada com o postgres -- Driver nao encontrado -- " + e.getMessage());
 		} catch (SQLException e) {
-			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
+			System.err.println("Conexao nao efetuada com o postgres -- " + e.getMessage());
 		}
 
 		return status;
@@ -49,9 +49,9 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("INSERT INTO usuario (codigo, login, senha, sexo) "
-					       + "VALUES ("+usuario.getCodigo()+ ", '" + usuario.getLogin() + "', '"  
-					       + usuario.getSenha() + "', '" + usuario.getSexo() + "');");
+			st.executeUpdate("INSERT INTO usuario (numero, nome, idade, sexo, profissao) "
+					       + "VALUES ("+usuario.getNumero()+ ", '" + usuario.getNome() + "', '"  
+					       + usuario.getIdade() + "', '" + usuario.getSexo() + "', '" + usuario.getProfissao() + "');");
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -64,9 +64,10 @@ public class DAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE usuario SET login = '" + usuario.getLogin() + "', senha = '"  
-				       + usuario.getSenha() + "', sexo = '" + usuario.getSexo() + "'"
-					   + " WHERE codigo = " + usuario.getCodigo();
+			String sql = "UPDATE usuario SET nome = '" + usuario.getNome() + "', idade = '"  
+				       + usuario.getIdade() + "', sexo = '" + usuario.getSexo() + "'"
+				       + "', profissao = '" + usuario.getProfissao() + "'"
+					   + " WHERE numero = " + usuario.getNumero();
 			st.executeUpdate(sql);
 			st.close();
 			status = true;
@@ -76,11 +77,11 @@ public class DAO {
 		return status;
 	}
 	
-	public boolean excluirUsuario(int codigo) {
+	public boolean excluirUsuario(int numero) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM usuario WHERE codigo = " + codigo);
+			st.executeUpdate("DELETE FROM usuario WHERE codigo = " + numero);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -102,8 +103,8 @@ public class DAO {
 	             rs.beforeFirst();
 
 	             for(int i = 0; rs.next(); i++) {
-	                usuarios[i] = new Usuario(rs.getInt("codigo"), rs.getString("login"), 
-	                		                  rs.getString("senha"), rs.getString("sexo").charAt(0));
+	                usuarios[i] = new Usuario(rs.getInt("numero"), rs.getString("nome"), 
+	                		                  rs.getInt("idade"), rs.getString("sexo").charAt(0),rs.getString("profissao"));
 	             }
 	          }
 	          st.close();
@@ -126,8 +127,8 @@ public class DAO {
 	             rs.beforeFirst();
 
 	             for(int i = 0; rs.next(); i++) {
-		                usuarios[i] = new Usuario(rs.getInt("codigo"), rs.getString("login"), 
-                         		                  rs.getString("senha"), rs.getString("sexo").charAt(0));
+		                usuarios[i] = new Usuario(rs.getInt("numero"), rs.getString("nome"), 
+      		                  rs.getInt("idade"), rs.getString("sexo").charAt(0),rs.getString("profissao"));
 	             }
 	          }
 	          st.close();

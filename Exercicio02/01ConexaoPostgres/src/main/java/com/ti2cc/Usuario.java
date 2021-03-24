@@ -1,47 +1,51 @@
 package com.ti2cc;
 
 public class Usuario {
-	private int codigo;
-	private String login;
-	private String senha;
+	private int numero;
+	private String nome;
+	private int idade;
 	private char sexo;
+	private String profissao;
 	
 	public Usuario() {
-		this.codigo = -1;
-		this.login = "";
-		this.senha = "";
+		this.numero = -1;
+		this.nome = "";
+		this.idade = 0;
 		this.sexo = '*';
+		this.profissao =  "";
 	}
 	
-	public Usuario(int codigo, String login, String senha, char sexo) {
-		this.codigo = codigo;
-		this.login = login;
-		this.senha = senha;
+	public Usuario(int numero, String nome, int idade, char sexo,String profissao) {
+		this.numero = numero;
+		this.nome = nome;
+		this.idade = idade;
 		this.sexo = sexo;
+		this.profissao = profissao;
 	}
 
-	public int getCodigo() {
-		return codigo;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+
+	public String getNome() {
+		return nome;
 	}
 
-	public String getLogin() {
-		return login;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public int getIdade() {
+		return idade;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	public char getSexo() {
@@ -51,10 +55,18 @@ public class Usuario {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+	
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuario [codigo=" + codigo + ", login=" + login + ", senha=" + senha + ", sexo=" + sexo + "]";
+		return "Usuario [numero=" + numero + ", nome=" + nome + ", idade=" + idade + ", sexo=" + sexo + ", profissao=" + profissao + "]";
 	}
 	
 }
